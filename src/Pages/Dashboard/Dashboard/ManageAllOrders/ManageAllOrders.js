@@ -13,7 +13,7 @@ const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allorders')
+        fetch('https://enigmatic-oasis-12833.herokuapp.com/allorders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -23,7 +23,7 @@ const ManageAllOrders = () => {
         console.log(id)
         if (warning) {
 
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://enigmatic-oasis-12833.herokuapp.com/orders/${id}`;
             fetch((url), {
                 method: 'DELETE'
             })

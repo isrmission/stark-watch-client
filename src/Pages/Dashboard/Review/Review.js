@@ -29,7 +29,7 @@ const Review = () => {
 
 
 
-        fetch('http://localhost:5000/reviewes', {
+        fetch('https://enigmatic-oasis-12833.herokuapp.com/reviewes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

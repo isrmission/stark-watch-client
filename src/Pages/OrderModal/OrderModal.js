@@ -49,7 +49,7 @@ const OrderModal = ({ openOrder, handleOrderClose, product, setOrderSuccess, han
             price: price
         }
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://enigmatic-oasis-12833.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

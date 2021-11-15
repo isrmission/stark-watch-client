@@ -19,7 +19,7 @@ const Explore = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://enigmatic-oasis-12833.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
                 setProducts(data)

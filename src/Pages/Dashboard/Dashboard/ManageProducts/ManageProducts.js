@@ -17,7 +17,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://enigmatic-oasis-12833.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [products.length])
@@ -27,7 +27,7 @@ const ManageProducts = () => {
         console.log(id)
         if (warning) {
 
-            const url = `http://localhost:5000/products/${id}`;
+            const url = `https://enigmatic-oasis-12833.herokuapp.com/${id}`;
             fetch((url), {
                 method: 'DELETE'
             })

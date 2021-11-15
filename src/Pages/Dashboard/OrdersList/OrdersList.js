@@ -15,7 +15,7 @@ const OrdersList = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/orders?email=${user.email}`
+        const url = `https://enigmatic-oasis-12833.herokuapp.com/orders?email=${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setOrders(data))
@@ -26,7 +26,7 @@ const OrdersList = () => {
         console.log(id)
         if (warning) {
 
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://enigmatic-oasis-12833.herokuapp.com/orders/${id}`;
             fetch((url), {
                 method: 'DELETE'
             })

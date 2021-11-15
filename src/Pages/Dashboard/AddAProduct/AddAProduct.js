@@ -29,7 +29,7 @@ const AddAProduct = () => {
 
 
 
-        fetch('http://localhost:5000/addproduct', {
+        fetch('https://enigmatic-oasis-12833.herokuapp.com/addproduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
