@@ -2,7 +2,7 @@ import { Alert, Button, CircularProgress, Container, LinearProgress } from '@mui
 import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { Box } from '@mui/system';
 import CheckIcon from '@mui/icons-material/Check';
@@ -13,7 +13,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 
 const Register = () => {
     const { user, registerUser, isLoading, authError } = useAuth();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [loginData, setLoginData] = useState({});
 
@@ -31,7 +31,7 @@ const Register = () => {
             alert('Password didnot match');
             return
         }
-        registerUser(loginData.email, loginData.password, loginData.name, history)
+        registerUser(loginData.email, loginData.password, loginData.name, navigate)
         e.preventDefault();
     }
     return (

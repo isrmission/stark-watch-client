@@ -11,7 +11,7 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
-                // console.log(data)
+                console.log(data)
             })
         // .finally(() => setIsLoading(false));
 

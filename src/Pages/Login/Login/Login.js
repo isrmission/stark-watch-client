@@ -2,7 +2,7 @@ import { Alert, Button, CircularProgress, Container } from '@mui/material';
 import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { Box } from '@mui/system';
 import CheckIcon from '@mui/icons-material/Check';
@@ -14,7 +14,7 @@ const Login = () => {
     const [loginData, setLoginData] = useState({});
 
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleOnChange = e => {
         const field = e.target.name;
@@ -24,12 +24,12 @@ const Login = () => {
         setLoginData(newLoginData)
     }
     const handleLoginSubmit = e => {
-        loginUser(loginData.email, loginData.password, location, history)
+        loginUser(loginData.email, loginData.password, location, navigate)
         e.preventDefault();
     }
 
     const handleGoogleSignIn = () => {
-        signInWithGoogle(location, history)
+        signInWithGoogle(location, navigate)
     }
 
 

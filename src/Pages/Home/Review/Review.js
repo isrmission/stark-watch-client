@@ -19,6 +19,7 @@ const Review = (props) => {
     // const [expanded, setExpanded] = React.useState(false);
     const { user } = useState();
     const { name, comment, rating } = props.review;
+    console.log(props)
     // const handleExpandClick = () => {
     //     setExpanded(!expanded);
     // };

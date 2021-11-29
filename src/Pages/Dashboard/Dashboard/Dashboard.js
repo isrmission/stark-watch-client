@@ -12,24 +12,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Button, CircularProgress } from '@mui/material';
-import OrdersList from '../OrdersList/OrdersList';
 import useAuth from '../../../hooks/useAuth';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useParams,
-    useRouteMatch
+    Outlet,
+    Link
 } from "react-router-dom";
-import DashboardHome from '../DashboardHome/DashboardHome';
-import MakeAdmin from '../MakeAdmin/MakeAdmin';
-import AddAProduct from '../AddAProduct/AddAProduct';
-import Pay from '../Pay/Pay';
-import ManageProducts from './ManageProducts/ManageProducts';
-import Review from '../Review/Review';
-import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
-import AdminRoute from '../../Login/Login/AdminRoute/AdminRoute';
 
 const drawerWidth = 220;
 
@@ -39,7 +26,6 @@ function Dashboard(props) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const img = 'https://i.ibb.co/8PC2FVD/cover.png';
     const { logOut, admin, user } = useAuth();
-    let { path, url } = useRouteMatch();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -61,21 +47,21 @@ function Dashboard(props) {
                 <ListItem sx={{ display: 'flex', flexDirection: 'column', p: 0 }}>
                     {!admin &&
                         <>
-                            <Link to={`${url}`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>My Orders</Button></Link>
-                            <Link to={`${url}/review`} style={{ width: '100%', textDecoration: 'none' }}> <Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", fontSize: "16px" }}>Review</Button></Link>
-                            <Link to={`${url}/payment`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", fontSize: "16px" }}>Pay</Button></Link>
+                            <Link to='/dashboard' style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>My Orders</Button></Link>
+                            <Link to={`/dashboard/review`} style={{ width: '100%', textDecoration: 'none' }}> <Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", fontSize: "16px" }}>Review</Button></Link>
+                            <Link to={`/dashboard/payment`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", fontSize: "16px" }}>Pay</Button></Link>
                         </>
                     }
 
                     {
                         admin && <>
-                            <Link to={`${url}/manageallorders`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>Manage All Orders</Button></Link>
+                            <Link to={`/dashboard/manageallorders`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>Manage All Orders</Button></Link>
 
-                            <Link to={`${url}/addaproduct`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>Add A Product</Button></Link>
+                            <Link to={`/dashboard/addaproduct`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>Add A Product</Button></Link>
 
-                            <Link to={`${url}/makeadmin`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>Make Admin</Button></Link>
+                            <Link to={`/dashboard/makeadmin`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>Make Admin</Button></Link>
 
-                            <Link to={`${url}/manageproducts`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>Manage Products</Button></Link>
+                            <Link to={`/dashboard/manageproducts`} style={{ width: '100%', textDecoration: 'none' }}><Button sx={{ border: '1px solid goldenrod', ":hover": { backgroundColor: 'blue', color: 'white', borderRadius: 0 } }} style={{ width: "100%", margin: "5px 0", padding: "10px 0", fontSize: "16px" }}>Manage Products</Button></Link>
                         </>
                     }
 
@@ -159,30 +145,7 @@ function Dashboard(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Switch>
-                    <Route exact path={path}>
-                        <DashboardHome></DashboardHome>
-                    </Route>
-                    <AdminRoute path={`${path}/makeadmin`}>
-                        <MakeAdmin></MakeAdmin>
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/addaproduct`}>
-                        <AddAProduct></AddAProduct>
-                    </AdminRoute>
-                    <Route path={`${path}/payment`}>
-                        <Pay></Pay>
-                    </Route>
-                    <AdminRoute path={`${path}/manageproducts`}>
-                        <ManageProducts></ManageProducts>
-                    </AdminRoute>
-                    <Route path={`${path}/review`}>
-                        <Review></Review>
-                    </Route>
-                    <AdminRoute path={`${path}/manageallorders`}>
-                        <ManageAllOrders></ManageAllOrders>
-                    </AdminRoute>
-
-                </Switch>
+                <Outlet></Outlet>
             </Box>
         </Box>
 
