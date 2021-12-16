@@ -12,7 +12,7 @@ const CheckoutForm = ({ price, name, mail, phone, id }) => {
     const [clientSecret, SetClientSecret] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://enigmatic-oasis-12833.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -79,7 +79,7 @@ const CheckoutForm = ({ price, name, mail, phone, id }) => {
                 transaction: paymentIntent.client_secret.slice('_secret')[0]
             }
 
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://enigmatic-oasis-12833.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {

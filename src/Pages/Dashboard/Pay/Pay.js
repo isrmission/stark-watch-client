@@ -12,7 +12,7 @@ const Pay = () => {
     const [order, setOrder] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${orderId}`)
+        fetch(`https://enigmatic-oasis-12833.herokuapp.com/orders/${orderId}`)
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [orderId])
