@@ -45,15 +45,15 @@ const ManageAllOrders = () => {
             <h2 style={{ backgroundColor: "#808080", lineHeight: '60px' }}>
                 Total Orders: {orders.length}
             </h2>
-            <TableContainer sx={{ width: '75%', mx: "auto", }} component={Paper}>
+            <TableContainer sx={{ width: '90%', mx: "auto", }} component={Paper}>
                 <Table sx={{ minWidth: 650 }} size="small" aria-label="Order List table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
-                            <TableCell align="right">Email</TableCell>
-                            <TableCell align="right">Phone</TableCell>
-                            <TableCell align="right">Product</TableCell>
-                            <TableCell align="right">Quantity</TableCell>
+                            <TableCell align="center">Email</TableCell>
+                            <TableCell align="center">Phone</TableCell>
+                            <TableCell align="center">Product</TableCell>
+                            <TableCell align="center">Quantity</TableCell>
                             <TableCell align="right">Action</TableCell>
                         </TableRow>
                     </TableHead>
@@ -66,10 +66,10 @@ const ManageAllOrders = () => {
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="right">{row.email}</TableCell>
-                                <TableCell align="right">{row.phone}</TableCell>
-                                <TableCell align="right">{row.product}</TableCell>
-                                <TableCell align="right">{row.quantity}</TableCell>
+                                <TableCell align="center">{row.email}</TableCell>
+                                <TableCell align="center">{row.phone}</TableCell>
+                                <TableCell align="center">{row.product}</TableCell>
+                                <TableCell align="center">{row.quantity}</TableCell>
                                 <TableCell align="right">
                                     <Button onClick={() => handleDelete(row._id)} variant="outlined">Cancel</Button>
                                 </TableCell>

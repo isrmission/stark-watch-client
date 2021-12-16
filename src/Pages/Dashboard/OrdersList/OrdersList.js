@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
+import { Box } from '@mui/system';
+import { Link } from 'react-router-dom';
 
 
 const OrdersList = () => {
@@ -48,16 +50,17 @@ const OrdersList = () => {
             <h2 style={{ backgroundColor: "#808080", lineHeight: '60px' }}>
                 Your Total Orders: {orders.length}
             </h2>
-            <TableContainer sx={{ width: '75%', mx: "auto", }} component={Paper}>
+            <TableContainer sx={{ width: '90%', mx: "auto", }} component={Paper}>
                 <Table sx={{ minWidth: 650 }} size="small" aria-label="Order List table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
-                            <TableCell align="right">Email</TableCell>
-                            <TableCell align="right">Phone</TableCell>
-                            <TableCell align="right">Product</TableCell>
-                            <TableCell align="right">Quantity</TableCell>
-                            <TableCell align="right">Action</TableCell>
+                            <TableCell align="center">Email</TableCell>
+                            <TableCell align="center">Phone</TableCell>
+                            <TableCell align="center">Product</TableCell>
+                            <TableCell align="center">Price</TableCell>
+                            <TableCell align="center">Quantity</TableCell>
+                            <TableCell align="center">Action</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -69,12 +72,24 @@ const OrdersList = () => {
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="right">{row.email}</TableCell>
-                                <TableCell align="right">{row.phone}</TableCell>
-                                <TableCell align="right">{row.product}</TableCell>
-                                <TableCell align="right">{row.quantity}</TableCell>
-                                <TableCell align="right">
-                                    <Button onClick={() => handleDelete(row._id)} variant="outlined">Cancel</Button>
+                                <TableCell align="center">{row.email}</TableCell>
+                                <TableCell align="center">{row.phone}</TableCell>
+                                <TableCell align="center">
+                                    <img width={'20%'} src={row.image} alt="" />
+                                </TableCell>
+                                <TableCell sx={{ fontWeight: 600 }} align="center">
+                                    ${row.price * row.quantity}
+                                </TableCell>
+                                <TableCell align="center">{row.quantity}</TableCell>
+                                <TableCell align="center">
+                                    {
+                                        row.payment ? <span style={{ color: 'green', fontWeight: '600' }}>Paid</span> : <Box sx={{ display: 'flex', alignItems: 'center', justifyItems: 'center', gap: 1 }} >
+                                            <Button sx={{ p: '2px 5px', ":hover": { bgcolor: '#1976d2', color: 'white' } }} onClick={() => handleDelete(row._id)} variant="outlined">Cancel</Button>
+                                            <Link style={{ textDecoration: 'none' }} to={`/dashboard/payment/${row._id}`}>
+                                                <Button sx={{ p: '2px 5px', ":hover": { bgcolor: '#1976d2', color: 'white' } }} variant="outlined">Pay</Button>
+                                            </Link>
+                                        </Box>
+                                    }
                                 </TableCell>
                             </TableRow>
                         ))}
@@ -86,3 +101,4 @@ const OrdersList = () => {
 };
 
 export default OrdersList;
+

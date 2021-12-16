@@ -26,8 +26,7 @@ const ManageProducts = () => {
         const warning = window.confirm("Are you sure to delete your order?");
         console.log(id)
         if (warning) {
-
-            const url = `https://enigmatic-oasis-12833.herokuapp.com/${id}`;
+            const url = `https://enigmatic-oasis-12833.herokuapp.com/products/${id}`;
             fetch((url), {
                 method: 'DELETE'
             })

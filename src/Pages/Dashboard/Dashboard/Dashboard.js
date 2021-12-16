@@ -101,7 +101,7 @@ function Dashboard(props) {
                         </Typography>
                     </Box>
                     <Box sx={{ flexShrink: 1 }}>
-                        <Typography align="right" variant="h6" wrap >
+                        <Typography align="right" variant="h6" wrap="true" >
                             Welcome, {user?.displayName}
                         </Typography>
                     </Box>

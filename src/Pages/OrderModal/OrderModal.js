@@ -23,9 +23,9 @@ const style = {
 };
 
 const OrderModal = ({ openOrder, handleOrderClose, product, setOrderSuccess, handleClick }) => {
-    const { product_name, price } = product;
+    const { product_name, price, image } = product;
     const { user } = useAuth();
-    const initialOrderInfo = { name: user.displayName, email: user.email, phone: '', address: '', quantity: '' }
+    const initialOrderInfo = { name: user.displayName, email: user.email, phone: '', address: '', quantity: '1' }
     const [orderinfo, setOrderInfo] = useState(initialOrderInfo);
     // const [isUser, setIsUser] = useState(false);
 
@@ -46,7 +46,8 @@ const OrderModal = ({ openOrder, handleOrderClose, product, setOrderSuccess, han
         const order = {
             ...orderinfo,
             product: product_name,
-            price: price
+            price: price,
+            image: image
         }
 
         fetch('https://enigmatic-oasis-12833.herokuapp.com/orders', {
@@ -174,7 +175,7 @@ const OrderModal = ({ openOrder, handleOrderClose, product, setOrderSuccess, han
 
                         />
                         <TextField fullWidth sx={{ mt: 2 }}
-
+                            required
                             id="demo-helper-text-aligned"
                             label="Phone Number"
                             name="phone"
